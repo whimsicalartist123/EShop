@@ -1,0 +1,1 @@
+# Django Powered Ecommerce Marketplace like Amazon, Flipkart
