@@ -1,0 +1,7 @@
+<div class="card mt-2 p-3">
+    <img src="/media/assets/product-placeholder.jpeg" alt="product-placeholder">
+    <h2 class="subtitle has-text-center">
+        <a href="{% url 'products:detail' product.id %}">{{ product.title }}</a>
+    </h2>
+    <p>{{ product.regular_price }}</p>
+</div>

@@ -11,17 +11,34 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Application definition
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'apps.users',
+    'django.contrib.sites',
 ]
+
+CUSTOM_APPS = [
+    'apps.users',
+    'apps.product',
+]
+
+THIRD_PARTY_APPS = [
+    'django_extensions',
+    'django_components',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+]
+
+# Application definition
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -36,10 +53,14 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'config.urls'
 AUTH_USER_MODEL = 'users.CustomUser'
 
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'templates' / 'allauth'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -48,15 +69,14 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'django_components.templatetags.component_tags',
+            ]
         },
     },
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -64,10 +84,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -90,7 +106,26 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+"""
+STATIC RESOURCES CONFIGURATION
+"""
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
+"""
+DJANGO ALL-AUTH CONFIGURATION
+"""
+AUTHENTICTION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None

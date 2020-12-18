@@ -25,7 +25,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self) -> str:
         return self.name
 
-class Customer(models.Model):
+class CustomerModel(models.Model):
     user = models.OneToOneField(
         CustomUser,
         on_delete=models.CASCADE,
@@ -36,11 +36,11 @@ class Customer(models.Model):
     def __str__(self) -> str:
         return f"Customer - {self.user.name}"
 
-class Seller(models.Model):
+class VendorModel(models.Model):
     user = models.OneToOneField(
         CustomUser,
         on_delete=models.CASCADE,
-        related_name="seller",
+        related_name="vendor",
     )
     gst = models.CharField(_("GST Number"), max_length=15, null=True, blank=True)
 
@@ -52,7 +52,7 @@ class Seller(models.Model):
 def create_customer_or_seller(sender, instance, created, **kwargs):
     if created:
         if instance.is_customer:
-            Customer.objects.create(user=instance)
+            CustomerModel.objects.create(user=instance)
         else:
-            Seller.objects.create(user=instance)
+            VendorModel.objects.create(user=instance)
 

@@ -26,7 +26,6 @@ class CustomUserManager(BaseUserManager):
 
     def create_superuser(self, name: str, email: str, password: Optional[str], **extra_fields: Any):
 
-        extra_fields.is_customer = False
         user = self.create_user(
             name,
             email,
@@ -34,6 +33,7 @@ class CustomUserManager(BaseUserManager):
             **extra_fields
         )
 
+        user.is_customer = False
         user.is_superuser = True
         user.is_staff = True
         user.save(using=self._db)

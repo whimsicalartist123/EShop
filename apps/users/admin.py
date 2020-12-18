@@ -3,15 +3,15 @@ from django.contrib.admin.options import ModelAdmin
 from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
-from .models import Customer, Seller, CustomUser
+from .models import CustomerModel, VendorModel, CustomUser
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
-@admin.register(Customer)
+@admin.register(CustomerModel)
 class CustomerAdmin(ModelAdmin):
     pass
 
-@admin.register(Seller)
-class SellerAdmin(ModelAdmin):
+@admin.register(VendorModel)
+class VendorAdmin(ModelAdmin):
     pass
 
 @admin.register(CustomUser)

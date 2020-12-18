@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="section">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}">
+                        <span class="icon is-small">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                        </span>
+                      Home
+                    </a>
+                </li>
+              <li><a href="/products/?category={{ product.category.slug }}">{{ product.category.title }}</a></li>
+              <li class="is-active"><a aria-current="page">{{ product.title }}</a></li>
+            </ul>
+        </nav>
+        <div class="columns">
+            <div class="column product-gallery">
+                <img src="/media/assets/product-placeholder.jpeg" alt="Placeholder-image">
+            </div>
+            <div class="column">
+
+                <!-- Product Title -->
+                <h1 class="title">
+                    {{ product.title }}
+                </h1>
+                <!-- Product Price -->
+                <p class="product-regular-price">{{ product.regular_price }}</p>
+                {% if product.sale_price %}
+                    <p class="product-sale-price">{{ product.sale_price }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
