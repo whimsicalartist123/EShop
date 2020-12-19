@@ -28,7 +28,6 @@ CUSTOM_APPS = [
 
 THIRD_PARTY_APPS = [
     'django_extensions',
-    'django_components',
 
     'allauth',
     'allauth.account',
@@ -69,9 +68,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'builtins': [
-                'django_components.templatetags.component_tags',
-            ]
         },
     },
 ]
