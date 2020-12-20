@@ -51,12 +51,3 @@ class VendorModel(models.Model):
         return f"Seller - {self.user.email}"
 
 
-# @receiver(post_save, sender=CustomUser)
-# def create_customer_or_seller(sender, instance, created, **kwargs):
-#     if created:
-#         print(instance.is_customer)
-#         if instance.is_customer:
-#             CustomerModel.objects.create(user=instance)
-#         else:
-#             VendorModel.objects.create(user=instance)
-
