@@ -9,7 +9,8 @@ SECRET_KEY = 'tnjqfbd)y)=gxkapobbfqiz-bocnr)ylh*+=0(2ia6yzd(h%!x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+INTERNAL_IPS = ['127.0.0.1']
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -27,6 +28,7 @@ CUSTOM_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'debug_toolbar',
     'django_extensions',
 
     'allauth',
@@ -40,6 +42,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

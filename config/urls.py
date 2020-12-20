@@ -7,6 +7,8 @@ from django.shortcuts import render
 from django.conf import settings
 from django.conf.urls.static import static
 
+import debug_toolbar
+
 def index(request):
     return render(request, "base.html", {})
 
@@ -15,6 +17,8 @@ urlpatterns = [
     path('products/', include('apps.product.urls')),
     path('auth/', include('allauth.urls')),
     path('admin/', admin.site.urls),
+
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
 
 if settings.DEBUG:
