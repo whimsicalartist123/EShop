@@ -23,7 +23,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     def __str__(self) -> str:
-        return self.name
+        if self.name:
+            return f"{self.name} - {self.email}"
+        else:
+            return f"User - {self.email}"
 
 class CustomerModel(models.Model):
     user = models.OneToOneField(
@@ -34,7 +37,7 @@ class CustomerModel(models.Model):
     phone = models.CharField(_("Phone Number"), max_length=10, null=True, blank=True)
 
     def __str__(self) -> str:
-        return f"Customer - {self.user.name}"
+        return f"Customer - {self.user.email}"
 
 class VendorModel(models.Model):
     user = models.OneToOneField(
@@ -45,14 +48,15 @@ class VendorModel(models.Model):
     gst = models.CharField(_("GST Number"), max_length=15, null=True, blank=True)
 
     def __str__(self) -> str:
-        return f"Seller - {self.user.name}"
+        return f"Seller - {self.user.email}"
 
 
-@receiver(post_save, sender=CustomUser)
-def create_customer_or_seller(sender, instance, created, **kwargs):
-    if created:
-        if instance.is_customer:
-            CustomerModel.objects.create(user=instance)
-        else:
-            VendorModel.objects.create(user=instance)
+# @receiver(post_save, sender=CustomUser)
+# def create_customer_or_seller(sender, instance, created, **kwargs):
+#     if created:
+#         print(instance.is_customer)
+#         if instance.is_customer:
+#             CustomerModel.objects.create(user=instance)
+#         else:
+#             VendorModel.objects.create(user=instance)
 

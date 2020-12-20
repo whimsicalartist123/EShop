@@ -6,34 +6,60 @@
         <div class="columns is-centered">
             <div class="box">
                 <form action="." method="post">
-                    <div class="field">
-                        <label class="label">Email</label>
-                        <p class="control has-icons-left has-icons-right">
-                          <input class="input" type="email" placeholder="Email">
-                          <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                          </span>
-                          <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                          </span>
-                        </p>
+                  {% csrf_token %}
+
+                  {{ form.non_field_errors }}
+                  {% for field in form.visible_fields %}
+                    {{ field.errors }}
+                  {% endfor %}
+
+                  {% comment %} Email Field {% endcomment %}
+                  <div class="field">
+                      <label class="label">Email</label>
+                      <p class="control has-icons-left has-icons-right">
+
+                        <input id="id_email" class="input" type="email" name="email" placeholder="E-mail Address" autocomplete="email" required="">
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                          <i class="fas fa-check"></i>
+                        </span>
+                      </p>
+                  </div>
+
+                  {% comment %} Password Field {% endcomment %}
+                  <div class="field">
+                      <label class="label">Password</label>
+                      <p class="control has-icons-left">
+                        <input type="password" name="password1" placeholder="Password" class="input" autocomplete="new-password" required="" id="id_password1">
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-lock"></i>
+                        </span>
+                      </p>
+                  </div>
+
+                  {% comment %} Customer Boolean Field {% endcomment %}
+                  <div class="field">
+                      <label class="label">Choose User Type</label>
+                    <p class="control has-icons-left">
+                      <div class="select">
+                        <select name="user_type" id="id_user_type">
+                          <option value="CUSTOMER">Customer</option>
+                          <option value="VENDOR">Vendor</option>
+                        </select>
                       </div>
-                      <div class="field">
-                          <label class="label">Password</label>
-                        <p class="control has-icons-left">
-                          <input class="input" type="password" placeholder="Password">
-                          <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                          </span>
-                        </p>
-                      </div>
-                      <div class="field">
-                        <p class="control">
-                          <button class="button is-success">
-                            Login
-                          </button>
-                        </p>
-                      </div>
+                    </p>
+                  </div>
+
+                  {% comment %} Form Buttom {% endcomment %}
+                  <div class="field">
+                    <p class="control">
+                      <button class="button is-success">
+                        Sign up
+                      </button>
+                    </p>
+                  </div>
                 </form>
             </div>
         </div>
