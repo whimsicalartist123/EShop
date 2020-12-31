@@ -4,7 +4,9 @@ from django.http import HttpResponse
 
 from .models import Product
 from .forms import ProductCreateUpdateForm
+
 from apps.core.decorators import user_is_seller
+from apps.cart.forms import CartAddProductForm
 
 
 # Product READ
@@ -34,12 +36,13 @@ def product_detail(request, product_id):
         product = get_object_or_404(Product, id=product_id)
     except Product.DoesNotExist:
         raise ValueError("No such Product")
-    
+    form = CartAddProductForm()
     return render(
         request,
         "product/details.html",
         {
-            "product": product
+            "product": product,
+            "cart_add_form": form
         }
     )
 

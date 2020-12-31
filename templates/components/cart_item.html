@@ -1,0 +1,22 @@
+<tr>
+    <td>
+        <figure class="image is-128x128">
+            <img src="/media/assets/product-placeholder.jpeg" alt="">
+        </figure>
+    </td>
+    <td>
+        <a href="{% url 'products:detail' product.id %}" class="subtitle">{{ product.title }}</a>
+    </td>
+    <td>
+        <p>{{ item.quantity }}</p>
+    </td>
+    <td>
+        {{ item.price }}
+    </td>
+    <td>
+        <form action="{% url 'cart:remove' product.id %}" method="post">
+            <input type="checkbox" name="" id="">
+        </form>
+    </td>
+</tr>
+

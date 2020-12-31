@@ -1,0 +1,9 @@
+<div class="container">
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {% csrf_token %}
+        {{ cart_add_form.quantity }}
+        {{ cart_add_form.override }}
+        <button class="button">Add to Cart</button>
+    </form>
+</div>
+

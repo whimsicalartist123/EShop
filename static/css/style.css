@@ -6,3 +6,11 @@
 .product-sale-price {
     display: inline-block;
 }
+
+.cart-totals {
+    height: 50%;
+}
+
+.product-image {
+    width: 100%;
+}

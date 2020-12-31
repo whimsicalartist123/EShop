@@ -7,6 +7,16 @@
     </div>
   
     <div id="navbarBasicExample" class="navbar-menu is-active">
+
+      <div class="navbar-start">
+        <a href="{% url 'products:list' %}" class="navbar-item">
+          Products
+        </a>
+
+        <a href="{% url 'cart:detail' %}" class="navbar-item">
+          Cart
+        </a>
+      </div>
   
       <div class="navbar-end">
         <div class="navbar-item">

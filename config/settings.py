@@ -12,6 +12,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = ['127.0.0.1']
 
+CART_SESSION_ID = 'cart'
+
 DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

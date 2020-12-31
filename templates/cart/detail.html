@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Your Cart
+{% endblock title %}
+
+{% block content %}
+    <div class="section">
+        <h1 class="title has-text-centered">Your Cart</h1>
+        <div class="container cart">
+            <div class="columns is-8 is-variable">
+                <div class="column">
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th></th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart %}
+                                {% with product=item.product %}
+                                    {% include "components/cart_item.html" %}
+                                {% endwith %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% comment %} <div class="columns is-mobile is-multiline">
+                        {% for item in cart %}
+                            <div class="column is-full box">
+                                {% with product=item.product %}
+                                    {% include "components/cart_item.html" %}
+                                {% endwith %}
+                            </div>
+                        {% endfor %}
+                    </div> {% endcomment %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+{% endblock content %}
