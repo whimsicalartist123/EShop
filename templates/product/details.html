@@ -34,6 +34,13 @@
                 {% if product.sale_price %}
                     <p class="product-sale-price">{{ product.sale_price }}</p>
                 {% endif %}
+
+                <form action="{% url 'cart:add' product.id %}" method="post">
+                    {% csrf_token %}
+                    {{ cart_add_form.quantity }}
+                    {{ cart_add_form.override }}
+                    <button class="button">Add to Cart</button>
+                </form>
             </div>
         </div>
     </div>

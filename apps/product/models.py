@@ -60,12 +60,14 @@ class Product(TitleSlugDescriptionModel, TimeStampedModel):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("prod")
+        return reverse("products:detail", args=[str(self.id)])
 
     @property
     def price(self):
         if self.sale_price:
             return self.sale_price
+        else:
+            return self.regular_price
 
     @property
     def discount_percent(self):
@@ -76,6 +78,4 @@ class Product(TitleSlugDescriptionModel, TimeStampedModel):
         else:
             return 0
     
-    def get_price_html(self):
-        return ""
 
