@@ -1,1 +1,1 @@
-# Django Powered Ecommerce Marketplace like Amazon, Flipkart
+# Django Powered Ecommerce Website with seller admin dashboard.
