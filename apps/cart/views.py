@@ -1,11 +1,13 @@
 from contextlib import redirect_stderr
-from django.shortcuts import get_object_or_404, render, redirect
+
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
+
+from apps.product.models import Product
 
 from .cart import Cart
 from .forms import CartAddProductForm
 
-from apps.product.models import Product
 
 @require_POST
 def cart_add(request, product_id):
@@ -25,6 +27,7 @@ def cart_remove(request, id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=id)
     cart.remove_product(product)
+    print(cart.cart)
     return redirect('cart:detail')
     
 

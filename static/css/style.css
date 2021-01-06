@@ -14,3 +14,11 @@
 .product-image {
     width: 100%;
 }
+
+.cart-item-remove {
+    color: red;
+}
+
+.cart-item-remove:hover {
+    color: red;
+}

@@ -15,7 +15,8 @@
     </td>
     <td>
         <form action="{% url 'cart:remove' product.id %}" method="post">
-            <input type="checkbox" name="" id="">
+            {% csrf_token %}
+            <button><i class="fas fa-trash-alt"></i></button>
         </form>
     </td>
 </tr>
