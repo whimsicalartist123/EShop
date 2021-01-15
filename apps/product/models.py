@@ -77,5 +77,24 @@ class Product(TitleSlugDescriptionModel, TimeStampedModel):
             )
         else:
             return 0
+
+    def get_all_images(self):
+        return self.images.all()
+    
+    def get_first_image(self):
+        return self.get_all_images()[0]
     
 
+class ProductImage(models.Model):
+    product = models.ForeignKey(
+        Product, 
+        related_name="images",
+        on_delete=models.CASCADE
+    )
+    order = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
+    alt = models.CharField(max_length=128, blank=True)
+
+    class Meta:
+        ordering = ("order", "pk")
+        app_label = "product"
