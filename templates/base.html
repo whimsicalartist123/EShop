@@ -1,40 +1,22 @@
+{% extends "super.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}EShop{% endblock %}</title>
-    {% comment %} <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
-    /> {% endcomment %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 
-    {% block head_tags %} {% endblock %}
-  </head>
-  <body class="bg-gray-100">
-    <div id="app">
+{% block title %}EShop - Home {% endblock %}
+
+{% block body %}
+  <div id="app">
       <!-- Navbar -->
       {% include "components/navbar.html" %}
 
       <main>
-        <!-- Breadcrumbs -->
-
         <!-- Main Body -->
         {% block content %} {% endblock content %}
       </main>
 
-    </div>
-
-    <script src="{% static 'javascript/app.js' %}"></script>
-
-    {% block js %} {% endblock %}
-  </body>
-</html>
+  </div>
+{% endblock body %}
+  
+    
+{% block javascript %} 
+  <script src="{% static 'javascript/app.js' %}"></script>
+{% endblock javascript %} 
