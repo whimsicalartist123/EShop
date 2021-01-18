@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.db.models import F
 
 from .models import Product
 from .forms import ProductCreateUpdateForm
@@ -19,7 +20,7 @@ def product_list(request):
 
     category_slug = str(request.GET.get('category'))
     category = None
-    products = Product.objects.filter(active=True)
+    products = Product.objects.filter(active=True).prefetch_related('category')
     if request.user.is_authenticated and not request.user.is_customer:
         products = products.filter(seller=request.user)
     if category_slug != 'None':

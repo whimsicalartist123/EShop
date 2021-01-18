@@ -36,6 +36,10 @@ THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    'versatileimagefield',
+
+    'widget_tweaks',
 ]
 
 # Application definition
@@ -143,4 +147,9 @@ ACCOUNT_FORMS = {
     "disconnect": "allauth.socialaccount.forms.DisconnectForm",
     # Use our custom signup form
     "signup": "apps.users.forms.CustomSignupForm",
+}
+
+VERSATILEIMAGEFIELD_SETTINGS = {
+    'jpeg_resize_quality': 70,
+    'create_images_on_demand': False,
 }

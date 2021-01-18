@@ -5,6 +5,7 @@ from django.conf import settings
 from django.urls import reverse
 
 from django_extensions.db.models import TitleSlugDescriptionModel
+from versatileimagefield.fields import VersatileImageField
 
 from apps.core.models import TimeStampedModel
 
@@ -81,9 +82,16 @@ class Product(TitleSlugDescriptionModel, TimeStampedModel):
     def get_all_images(self):
         return self.images.all()
     
-    def get_first_image(self):
-        return self.get_all_images()[0]
+    @property
+    def first_image(self):
+        images = self.get_all_images()
+        if len(images) == 0:
+            return ""
+        return images[0]
     
+
+def image_directory_path(instance, filename):
+    return f"products/{instance.product.id}/{filename}"
 
 class ProductImage(models.Model):
     product = models.ForeignKey(
@@ -92,7 +100,7 @@ class ProductImage(models.Model):
         on_delete=models.CASCADE
     )
     order = models.IntegerField(null=True, blank=True)
-    image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
+    image = VersatileImageField(upload_to=image_directory_path)
     alt = models.CharField(max_length=128, blank=True)
 
     class Meta:
