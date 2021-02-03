@@ -192,9 +192,7 @@
         <div class="border-b-2 border-gray-400 my-4"></div>
 
         <div class="flex justify-between align-items">
-          <span class="title-font font-medium text-xl text-gray-900"
-            >₹{{ product.price }}</span
-          >
+          <span class="title-font font-medium text-xl text-gray-900">₹{{ product.price }}</span>
 
           <form action="{% url 'cart:add' product.id %}" method="post">
             {% csrf_token %}

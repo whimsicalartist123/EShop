@@ -6,7 +6,10 @@
 {% block body %}
   <div id="app">
       <!-- Navbar -->
-      {% include "components/navbar.html" %}
+      {% block header %}
+        {% include "components/navbar.html" %}
+      {% endblock header %}
+      
 
       <main>
         <!-- Main Body -->

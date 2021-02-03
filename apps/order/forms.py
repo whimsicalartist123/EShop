@@ -14,7 +14,7 @@ class ShippingChoices:
 class CheckoutForm(forms.ModelForm):
     first_name = forms.CharField(max_length=256)
     last_name = forms.CharField(max_length=256)
-    address = forms.CharField(widget=forms.Textarea, required=True)
+    address = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), required=True)
     city = forms.CharField(required=True)
     state = forms.CharField(required=True)
     country = forms.CharField(required=True)

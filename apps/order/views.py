@@ -35,7 +35,6 @@ class CheckoutView(View):
                 pincode=data.get('pincode'),
             )
 
-            print(cart.get_total_price())
             new_order = Order.objects.create(
                 first_name=data.get('first_name'),
                 last_name=data.get('last_name'),
