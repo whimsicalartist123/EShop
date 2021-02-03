@@ -9,11 +9,13 @@ from django.conf.urls.static import static
 
 import debug_toolbar
 
+from apps.order.views import CheckoutView
 def index(request):
     return render(request, "base.html", {})
 
 urlpatterns = [
     path('', index, name="home"),
+    path('checkout/', CheckoutView.as_view(), name="checkout"),
     path('cart/', include('apps.cart.urls', namespace='cart')),
     path('products/', include('apps.product.urls')),
     path('auth/', include('allauth.urls')),
