@@ -4,4 +4,4 @@ from .models import Address
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
-    list_display = ['city', 'pincode', 'country', 'customer']
+    list_display = ['id', 'city', 'pincode', 'country', 'customer']
