@@ -3,7 +3,6 @@ const app = new Vue({
     el: "#app",
     data() {
         return {
-            
         }
     },
     methods: {
@@ -14,5 +13,5 @@ const app = new Vue({
             hamburger.classList.toggle("is-active")
             menu.classList.toggle("is-active")
         }
-    }
+    },
 })
