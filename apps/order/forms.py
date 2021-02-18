@@ -3,12 +3,12 @@ from django import forms
 from apps.order.models import Order
 
 class ShippingChoices:
-    FREE = 'Free Shipping'
-    REGULAR = 'Regular'
+    FREE = 0
+    REGULAR = 200
 
     CHOICES = [
-        (FREE, 'free'),
-        (REGULAR, 'regular')
+        (FREE, 'Free Shipping'),
+        (REGULAR, 'Regular Shipping')
     ]
 
 class CheckoutForm(forms.ModelForm):
@@ -19,8 +19,8 @@ class CheckoutForm(forms.ModelForm):
     state = forms.CharField(required=True)
     country = forms.CharField(required=True)
     pincode = forms.CharField(max_length=6, required=True)
+    shipping_choices = forms.ChoiceField(choices=ShippingChoices.CHOICES, widget=forms.RadioSelect)
 
     class Meta:
         model = Order
-        exclude = ('status', 'customer', 'address', 'paid', 'total_order_amount')
-
+        exclude = ('status', 'customer', 'address', 'paid', 'total_order_amount', 'shipping_price')
