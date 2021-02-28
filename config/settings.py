@@ -148,10 +148,12 @@ ACCOUNT_FORMS = {
     "reset_password": "allauth.account.forms.ResetPasswordForm",
     "reset_password_from_key": "allauth.account.forms.ResetPasswordKeyForm",
     "disconnect": "allauth.socialaccount.forms.DisconnectForm",
+    
     # Use our custom signup form
     "signup": "apps.users.forms.CustomSignupForm",
 }
 
+# Versatile Image Field Settings.
 VERSATILEIMAGEFIELD_SETTINGS = {
     'jpeg_resize_quality': 70,
     'create_images_on_demand': False,
