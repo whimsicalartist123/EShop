@@ -17,8 +17,8 @@ urlpatterns = [
     path('cart/', include('apps.cart.urls', namespace='cart')),
     path('order/', include('apps.order.urls', namespace='order')),
     path('products/', include('apps.product.urls')),
-    path('auth/', include('apps.users.urls', namespace='auth')),
-    # path('auth/', include('allauth.urls')),
+    # path('auth/', include('apps.users.urls', namespace='auth')),
+    path('auth/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 
     path('__debug__/', include(debug_toolbar.urls)),

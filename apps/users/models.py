@@ -13,6 +13,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now=True)
 
     is_customer = models.BooleanField(default=True)
@@ -38,16 +39,5 @@ class CustomerModel(models.Model):
 
     def __str__(self) -> str:
         return f"Customer - {self.user.email}"
-
-class VendorModel(models.Model):
-    user = models.OneToOneField(
-        CustomUser,
-        on_delete=models.CASCADE,
-        related_name="vendor",
-    )
-    gst = models.CharField(_("GST Number"), max_length=15, null=True, blank=True)
-
-    def __str__(self) -> str:
-        return f"Seller - {self.user.email}"
 
 
