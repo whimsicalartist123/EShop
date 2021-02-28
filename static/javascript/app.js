@@ -1,17 +1,19 @@
 const app = new Vue({
     delimiters: ['[[', ']]'],
     el: "#app",
-    data() {
-        return {
-        }
-    },
+    data: () => ({
+        isOn: false
+    }),
     methods: {
         toggleHamburger() {
-            const hamburger = this.$refs.hamburger;
-            const menu = this.$refs.menu;
-
-            hamburger.classList.toggle("is-active")
-            menu.classList.toggle("is-active")
+            this.isOn = !this.isOn
+            // const hamburger = this.$refs.mobile_menu;
+            const menu = this.$refs.mobile_menu;
+            menu.classList.toggle("hidden")
+        },
+        toggleProfile() {
+            const profile = this.$refs.profile_dropdown
+            profile.classList.toggle("hidden")
         }
     },
 })
