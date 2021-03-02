@@ -8,18 +8,19 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('email', 'name',)
+        fields = ('email',)
 
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'name',)
+        fields = ('email', )
 
 class CustomSignupForm(SignupForm):
+    name = forms.CharField(max_length=50)
 
     # Create Customer Model on User Signup.
     def custom_signup(self, request, user):
-        print("Inside User Custom Signup")
-        _ = CustomerModel.objects.create(user=user)
+        cd = self.cleaned_data
+        _ = CustomerModel.objects.create(user=user, name=cd["name"])
         user.save()

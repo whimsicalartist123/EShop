@@ -9,7 +9,6 @@ from .managers import CustomUserManager
 class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(_("Email address"), max_length=254, unique=True)
-    name = models.CharField(_("User Name"), max_length=50)
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -24,10 +23,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     def __str__(self) -> str:
-        if self.name:
-            return f"{self.name} - {self.email}"
-        else:
-            return f"User - {self.email}"
+        return f"User - {self.email}"
 
 class CustomerModel(models.Model):
     user = models.OneToOneField(
@@ -35,6 +31,7 @@ class CustomerModel(models.Model):
         on_delete=models.CASCADE,
         related_name="customer",
     )
+    name = models.CharField(_("User Name"), max_length=50, default="User")
     phone = models.CharField(_("Phone Number"), max_length=10, null=True, blank=True)
 
     def __str__(self) -> str:
