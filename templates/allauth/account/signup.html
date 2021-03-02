@@ -13,7 +13,9 @@
           <form action="." method="post">
 
             {% csrf_token %}
-            
+
+            {% render_field form.name class='block border border-grey-light w-full p-3 rounded mb-4' placeholder="Your Name" %}
+
             {% render_field form.email class='block border border-grey-light w-full p-3 rounded mb-4' %}
 
             {% render_field form.password1 class='block border border-grey-light w-full p-3 rounded mb-4' %}
@@ -21,8 +23,8 @@
             {% if redirect_field_value %}
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
-            <button type="submit"
-              class="w-full text-center py-3 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1">Create Account
+            <button type="submit" class="w-full text-center py-3 rounded bg-green-400 text-black hover:bg-green-600 focus:outline-none my-1">
+              Create Account
             </button>
           </form>
     

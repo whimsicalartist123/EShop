@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}
+{% trans "EShop - Verify your email address" %}
+{% endblock title %}
+
+{% block content %}
+<div>
+
+    {% if messages %}
+    <div class="container mx-auto mt-20">
+        <strong>Messages:</strong>
+        <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <h2>No messages</h2>
+    {% endif %}
+
+    <h1>{% trans "Verify Your Email Address" %}</h1>
+</div>
+{% endblock content %}
