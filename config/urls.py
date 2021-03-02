@@ -18,7 +18,7 @@ urlpatterns = [
     path('order/', include('apps.order.urls', namespace='order')),
     path('products/', include('apps.product.urls')),
     path('accounts/', include('allauth.urls')),
-    path('profile/', include('apps.users.urls', namespace='profile')),
+    path('dashboard/', include('apps.users.urls', namespace='profile')),
     path('admin/', admin.site.urls),
 
     path('__debug__/', include(debug_toolbar.urls)),
