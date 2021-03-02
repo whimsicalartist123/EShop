@@ -114,10 +114,18 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+
+
+"""
+    Email Backend Configuration
+"""
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
 """
 STATIC RESOURCES CONFIGURATION
 """
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -125,6 +133,8 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+
 
 """
 DJANGO ALL-AUTH CONFIGURATION
@@ -138,7 +148,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
 ACCOUNT_FORMS = {
     "login": "allauth.account.forms.LoginForm",
@@ -153,7 +163,11 @@ ACCOUNT_FORMS = {
     "signup": "apps.users.forms.CustomSignupForm",
 }
 
-# Versatile Image Field Settings.
+
+
+"""
+Versatile Image Field Settings.
+"""
 VERSATILEIMAGEFIELD_SETTINGS = {
     'jpeg_resize_quality': 70,
     'create_images_on_demand': False,
