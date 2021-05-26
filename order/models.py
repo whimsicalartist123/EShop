@@ -1,8 +1,8 @@
 from django.db import models
 
-from apps.core.models import Address, TimeStampedModel
-from apps.users.models import CustomerModel
-from apps.product.models import Product
+from core.models import Address, TimeStampedModel
+from users.models import CustomerModel
+from product.models import Product
 
 
 class OrderStatus:

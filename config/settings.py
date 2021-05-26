@@ -25,15 +25,16 @@ DJANGO_APPS = [
 ]
 
 CUSTOM_APPS = [
-    'apps.core',
-    'apps.users',
-    'apps.product',
-    'apps.order',
+    'core',
+    'users',
+    'product',
+    'order',
 ]
 
 THIRD_PARTY_APPS = [
     'debug_toolbar',
     'django_extensions',
+    'rest_framework',
 
     'allauth',
     'allauth.account',
@@ -78,7 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'apps.cart.context_processors.cart'
+                'cart.context_processors.cart'
             ],
         },
     },
@@ -149,10 +150,17 @@ ACCOUNT_FORMS = {
     "reset_password_from_key": "allauth.account.forms.ResetPasswordKeyForm",
     "disconnect": "allauth.socialaccount.forms.DisconnectForm",
     # Use our custom signup form
-    "signup": "apps.users.forms.CustomSignupForm",
+    "signup": "users.forms.CustomSignupForm",
 }
 
 VERSATILEIMAGEFIELD_SETTINGS = {
     'jpeg_resize_quality': 70,
     'create_images_on_demand': False,
+}
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
 }

@@ -8,8 +8,8 @@ from django.db.models import F
 from .models import Product
 from .forms import ProductCreateUpdateForm
 
-from apps.core.decorators import user_is_seller
-from apps.cart.forms import CartAddProductForm
+from core.decorators import user_is_seller
+from cart.forms import CartAddProductForm
 
 
 # Product READ
@@ -59,6 +59,10 @@ class ProductDetailView(DetailView):
         ctx["cart_add_form"] = CartAddProductForm()
         return ctx
 
+"""
+All Views writtern below are for the admin seller.
+"""
+
 
 # Product CREATE
 @login_required
@@ -97,6 +101,5 @@ def product_delete(request, product_id):
 
 
 
-
-class ProductCreateUpdateDeleteView( CreateView, UpdateView, DeleteView): 
+class ProductCreateUpdateDeleteView(CreateView, UpdateView, DeleteView): 
     pass

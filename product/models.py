@@ -7,7 +7,7 @@ from django.urls import reverse
 from django_extensions.db.models import TitleSlugDescriptionModel
 from versatileimagefield.fields import VersatileImageField
 
-from apps.core.models import TimeStampedModel
+from core.models import TimeStampedModel
 
 class Category(TitleSlugDescriptionModel):
 
@@ -100,7 +100,7 @@ class ProductImage(models.Model):
         on_delete=models.CASCADE
     )
     order = models.IntegerField(null=True, blank=True)
-    image = VersatileImageField(upload_to=image_directory_path)
+    image = VersatileImageField(upload_to=image_directory_path, blank=True)
     alt = models.CharField(max_length=128, blank=True)
 
     class Meta:

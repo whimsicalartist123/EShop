@@ -14,9 +14,9 @@ def index(request):
 
 urlpatterns = [
     path('', index, name="home"),
-    path('cart/', include('apps.cart.urls', namespace='cart')),
-    path('order/', include('apps.order.urls', namespace='order')),
-    path('products/', include('apps.product.urls')),
+    path('cart/', include('cart.urls', namespace='cart')),
+    path('order/', include('order.urls', namespace='order')),
+    path('products/', include('product.urls')),
     path('auth/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 

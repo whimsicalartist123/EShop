@@ -3,6 +3,7 @@ from django.forms import fields
 
 from .models import Product
 
+# For Sellers
 class ProductCreateUpdateForm(forms.ModelForm):
 
     class Meta:

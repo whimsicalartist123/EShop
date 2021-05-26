@@ -1,6 +1,6 @@
 from django import forms
 
-from apps.order.models import Order
+from order.models import Order
 
 class ShippingChoices:
     FREE = 0

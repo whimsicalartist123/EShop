@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.users.models import CustomerModel
+from users.models import CustomerModel
 
 
 class SeoModel(models.Model):

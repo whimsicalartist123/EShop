@@ -1,68 +1,64 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<section class="grid place-content-center my-10">
+  <h1 class="font-semibold text-3xl text-center">Signup</h1>
+  <div class="mt-5">
+    <form action="." method="post">
+      {% csrf_token %} 
+      
+      {{ form.non_field_errors }} 
+        {% for field in form.visible_fields %} 
+          {{ field.errors }} 
+        {% endfor %} 
 
-{% block content %}
-    <section class="section">
-        <h1 class="title has-text-centered">Signup</h1>
-        <div class="columns is-centered">
-            <div class="box">
-                <form action="." method="post">
-                  {% csrf_token %}
 
-                  {{ form.non_field_errors }}
-                  {% for field in form.visible_fields %}
-                    {{ field.errors }}
-                  {% endfor %}
+        {% comment %} Email Field {% endcomment %}
+      <div class="my-2 flex flex-col">
+        <label class="label">Email</label>
 
-                  {% comment %} Email Field {% endcomment %}
-                  <div class="field">
-                      <label class="label">Email</label>
-                      <p class="control has-icons-left has-icons-right">
+        <input
+          id="id_email"
+          class="py-2 px-4 rounded"
+          type="email"
+          name="email"
+          placeholder="E-mail Address"
+          autocomplete="email"
+          required=""
+        />
+      </div>
 
-                        <input id="id_email" class="input" type="email" name="email" placeholder="E-mail Address" autocomplete="email" required="">
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                          <i class="fas fa-check"></i>
-                        </span>
-                      </p>
-                  </div>
+      {% comment %} Password Field {% endcomment %}
+      <div class="my-2 flex flex-col">
+        <label class="label">Password</label>
 
-                  {% comment %} Password Field {% endcomment %}
-                  <div class="field">
-                      <label class="label">Password</label>
-                      <p class="control has-icons-left">
-                        <input type="password" name="password1" placeholder="Password" class="input" autocomplete="new-password" required="" id="id_password1">
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-lock"></i>
-                        </span>
-                      </p>
-                  </div>
+        <input
+          type="password"
+          name="password1"
+          placeholder="Password"
+          class="py-2 px-4 rounded"
+          autocomplete="new-password"
+          required=""
+          id="id_password1"
+        />
+      </div>
 
-                  {% comment %} Customer Boolean Field {% endcomment %}
-                  <div class="field">
-                      <label class="label">Choose User Type</label>
-                    <p class="control has-icons-left">
-                      <div class="select">
-                        <select name="user_type" id="id_user_type">
-                          <option value="CUSTOMER">Customer</option>
-                          <option value="VENDOR">Vendor</option>
-                        </select>
-                      </div>
-                    </p>
-                  </div>
+      {% comment %} Customer Boolean Field {% endcomment %}
+      <div class="my-2">
+        <label class="label">Choose User Type</label>
 
-                  {% comment %} Form Buttom {% endcomment %}
-                  <div class="field">
-                    <p class="control">
-                      <button class="button is-success">
-                        Sign up
-                      </button>
-                    </p>
-                  </div>
-                </form>
-            </div>
+        <div class="select">
+          <select name="user_type" id="id_user_type">
+            <option value="CUSTOMER">Customer</option>
+            <option value="VENDOR">Vendor</option>
+          </select>
         </div>
-        
-    </section>
+      </div>
+
+      {% comment %} Form Buttom {% endcomment %}
+      <div class="my-5">
+        <button class="w-full py-2 bg-green-400 rounded text-white">Sign up</button>
+      </div>
+    </form>
+  </div>
+</section>
+
 {% endblock content %}
