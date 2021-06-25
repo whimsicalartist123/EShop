@@ -14,10 +14,10 @@
           </a>
         </li>
         {% if request.GET.category %}
-        <li><span class="mx-2">/</span></li>
-        <li class="is-active"><a>{{ request.GET.category | title }}</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li class="is-active"><a>{{ request.GET.category | title }}</a></li>
         {% else %}
-        <li><span class="mx-2">/</span></li>
+        <li><span class="mx-2"> / </span></li>
         <li class="is-active mx-2">
           <a href="{% url 'products:list' %}">Shop</a>
         </li>
